@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Blackjack {
 	private String playerName;
-	private int playerCash = 2000;
-	private int playerBet;
 	private int playerHand;
 	private int dealerHand;
 	private boolean playerStick = true;
@@ -27,7 +25,7 @@ public class Blackjack {
 		System.out.println("* The dealer has now two cards as well.");
 		game.playerHand = game.initCards();
 		game.dealerHand = game.initCards();
-		System.out.println("* The current value of your cards at hand is " + game.playerHand + ".");
+		System.out.println("* The current value of your cards on hand is " + game.playerHand + ".");
 		
 		/**
 		 * Let the player decide to hit or stick.
