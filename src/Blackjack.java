@@ -36,18 +36,23 @@ public class Blackjack {
 			System.out.println("> Hit (1) or Stick (0)?");
 			
 			game.playerChoice = game.playerInput.nextInt();
-			if(game.playerChoice == 0) {
-				game.playerStick = false;
-			} else {
-				System.out.println("* Dealer draws a card from the deck of cards and passes it to you.");
-				game.playerHand = game.playerHand + game.hit();
-				System.out.println("* The current value of your hand is " + game.playerHand + ".");	
-				if(game.playerHand > 21) {
-					System.out.println("* You just lost the game.");
-					break;
+			if(game.playerChoice == 1 || game.playerChoice == 0) {
+				
+				if(game.playerChoice == 0) {
+					game.playerStick = false;
+				} else {
+					System.out.println("* Dealer draws a card from the deck of cards and passes it to you.");
+					game.playerHand = game.playerHand + game.hit();
+					System.out.println("* The current value of your hand is " + game.playerHand + ".");	
+					if(game.playerHand > 21) {
+						System.out.println("* You just lost the game.");
+						break;
+					}
 				}
-			}
-			
+
+			} else {
+				System.out.println("Please only select between 1 (Hit) and 0 (Stick).");				
+			}			
 		}
 		
 		if(!game.playerStick) {
