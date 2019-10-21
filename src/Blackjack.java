@@ -87,7 +87,7 @@ public class Blackjack {
 	
 	/**
 	 * The dealer deals a random card.
-	 * @return
+	 * @return random integer (between 1-10)
 	 */
 	public int hit() {
 		int randomCard = (int) (Math.random() * 10 + 1);
@@ -96,7 +96,7 @@ public class Blackjack {
 	
 	/**
 	 * The dealer deals two cards.
-	 * @return
+	 * @return int
 	 */
 	public int dealCards() {
 		int dealCards = hit() + hit();
