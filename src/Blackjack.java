@@ -17,7 +17,7 @@ public class Blackjack {
 	}
 	
 	/**
-	 * Initialize the Blackjack game.dealerStand
+	 * Initialize the Blackjack game.
 	 */
 	public void startGame() {
 		System.out.println("* Welcome to the game of Simple Blackjack!");
@@ -31,11 +31,11 @@ public class Blackjack {
 	
 	/**
 	 * Player's turn to play, to 
-	 * choose between Hit or Stick.
+	 * choose between Hit or Stand.
 	 */
 	public void playerTurn() {
 		while(game.playerStand) {
-			System.out.println("> Hit (1) or Stick (0)?");
+			System.out.println("> Hit (1) or Stand (0)?");
 			game.playerChoice = game.playerInput.nextInt();
 			if(game.playerChoice == 1 || game.playerChoice == 0) {
 				
@@ -52,14 +52,13 @@ public class Blackjack {
 				}
 
 			} else {
-				System.out.println("Please only select between 1 (Hit) and 0 (Stick).");				
+				System.out.println("Please only select between 1 (Hit) and 0 (Stand).");				
 			}			
 		}
 	}
 	
 	/**
-	 * It is now the dealer's turn
-	 * to play. He'll try to win.
+	 * Dealer's turn to play.
 	 */
 	public void dealerTurn() {
 		if(!game.playerStand) {
@@ -87,7 +86,7 @@ public class Blackjack {
 	
 	/**
 	 * The dealer deals a random card.
-	 * @return random integer (between 1-10)
+	 * @return random int (between 1-10)
 	 */
 	public int hit() {
 		int randomCard = (int) (Math.random() * 10 + 1);
