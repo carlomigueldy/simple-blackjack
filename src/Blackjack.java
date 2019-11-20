@@ -1,13 +1,15 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Blackjack {
 	private static String playerName;
 	private static int playerHand;
 	private static int dealerHand;
-	private static boolean playerStand = true;
-	private static boolean dealerStand = true;
+	private static boolean playerTurn = true;
+	private static boolean dealerTurn = true;
 	private static int playerChoice;
 	private static Scanner playerInput = new Scanner(System.in);
+	private static Random hitCard = new Random();
 	
 	public static void main(String[] args) {
 		startGame();
@@ -33,19 +35,19 @@ public class Blackjack {
 	 * choose between Hit or Stand.
 	 */
 	public static void playerTurn() {
-		while(playerStand) {
+		while(playerTurn) {
 			System.out.println("> Hit (1) or Stand (0)?");
 			playerChoice = playerInput.nextInt();
 			if(playerChoice == 1 || playerChoice == 0) {
 				
 				if(playerChoice == 0) {
-					playerStand = false;
+					playerTurn = false;
 				} else {
 					System.out.println("* Dealer draws a card from the deck of cards and passes it to you.");
 					playerHand = playerHand + hit();
 					System.out.println("* The current value of your hand is " + playerHand + ".");	
 					if(playerHand > 21) {
-						System.out.println("* You just lost the ");
+						System.out.println("* You just lost the game.");
 						break;
 					}
 				}
@@ -60,14 +62,14 @@ public class Blackjack {
 	 * Dealer's turn to play.
 	 */
 	public static void dealerTurn() {
-		if(!playerStand) {
+		if(!playerTurn) {
 			System.out.println("* The current value of Dealer's hand is " + dealerHand + ".");
 			
 			if(dealerHand > 21) {
 				System.out.println("* You won the game! Congratulations " + playerName + ".");
 			}
 			
-			while(dealerStand) {
+			while(dealerTurn) {
 				System.out.println("* Dealer draws a card from the deck.");
 				dealerHand = dealerHand + hit();
 				System.out.println("* The current value of Dealer's cards is " + dealerHand + ".");
@@ -88,8 +90,7 @@ public class Blackjack {
 	 * @return random int (between 1-10)
 	 */
 	public static int hit() {
-		int randomCard = (int) (Math.random() * 10 + 1);
-		return randomCard;
+		return hitCard.nextInt((10 - 1) + 1) + 1;
 	}
 	
 	/**
